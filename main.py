@@ -1,7 +1,22 @@
+
+name = (str)(input("Enter your name"))
+
+
 class player:
-    def __init__(self, h, m, s):
-        self.hour = h
-        self.min = m
-        self.sec = s
+
+
+
+    def __init__(self, ):
+        self.bScore = 0
+
+
+
+
+class human:
+
+class computer:
+
+
+
 
 
