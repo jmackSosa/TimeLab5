@@ -1,5 +1,4 @@
 
-name = (str)(input("Enter your name"))
 
 
 class player:
