@@ -21,17 +21,16 @@ class computer:
 
 
 class gameboard:
-    __init__(self):
-        self.mGB = [4] * 14
-        self.mGB[6] = 0
-        self.mGB[13] = 0
-    def rBeans(self, n):
-        handBeans = 0
+        global mGB = [4] * 14
+        global mGB[6] = 0
+        global mGB[13] = 0
+    def rBeans(n):
+        hBeans = 0
         nPit = n
-        handBeans = mGB[n]
+        hBeans = mGB[n]
         mGB[n] = 0
 
-        for x in range (handBeans):
+        for x in range (hBeans):
             nPit += 1
             mGB[nPit] += 1
 
