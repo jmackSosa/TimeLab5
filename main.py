@@ -2,13 +2,21 @@
 class player:
 
 #player constructor
-    def __init__(self ):
+    def __init__(self):
         self.bScore = 0
-        turn = false
+        self.sGB = [4] * 7
+        self.sGB[6] = 0
+        self.turn = False
+
     def getScore(self):
         return self.bScore
 
-    def cPit(self, num):
+    def turn(self):
+        return self.turn
+
+    def sTurn(self):
+     (self.turn) != (self.turn)
+
 
 
 
@@ -16,23 +24,13 @@ class human:
     __init__(self, n):
         name = n
 
-
-class computer:
+#class computer:
 
 
 class gameboard:
         global mGB = [4] * 14
         global mGB[6] = 0
         global mGB[13] = 0
-    def rBeans(n):
-        hBeans = 0
-        nPit = n
-        hBeans = mGB[n]
-        mGB[n] = 0
-
-        for x in range (hBeans):
-            nPit += 1
-            mGB[nPit] += 1
 
 
 
@@ -40,3 +38,14 @@ class gameboard:
 
 
 class game:
+
+    def rBeans(n):
+        hBeans = 0
+        nPit = n
+        hBeans = mGB[n]
+        mGB[n] = 0
+
+        for x in range(hBeans):
+            nPit += 1
+            mGB[nPit] += 1
+
