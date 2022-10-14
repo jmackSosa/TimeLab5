@@ -13,20 +13,31 @@ class player:
 
 
 class gameboard:
-    def __init__(self, size):
-        self.boardS = size
+    def __init__(self):
+        self.r, self.c = (2, 7)
+        self.GB = [[4] * self.c] * self.r
+        self.GB(0, 0) = 0
 
-    def oneMove(self, pit):
-        print(" player one move at pit " + str(pit))
-        return False
+    def Move(self, pit):
+        if (0 < pit < 7):
+            GB(
+        else:
+        print(" player", , "move at pit " + str(pit))
 
-    def twoMove(self, pit):
-        print(" plyaer two move at pit " + str(pit))
-        return True
+
+
+
+    def getGB(self)
+        print(self.GB)
+
+
+
+
+
 
 
 class game:
-
+    self.p1
     def __init__(self, p1, p2, board1):
         self.player1 = p1
         self.player2 = p2
@@ -41,18 +52,18 @@ class game:
                 # call method to gameboard class
                 pitO = int(input("enter value for player one: "))
 
-                if board1.oneMove(pitO) == False:
+                if board1.Move(pitO) == False:
                     p1.setTurn(False)
                 else:
                     p1.setTurn(True)
 
-            if p2.getTurn() == True:
+            if p2.getTurn():
 
                 # calls method to gameboard class
 
                 pitT = int(input("enter value for player two:"))
 
-                if board1.twoMove(pitT) == False:
+                if board1.Move(pitT) == False:
                     p2.setTurn(False)
                 else:
                     p2.setTurn(True)
