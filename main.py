@@ -16,13 +16,24 @@ class gameboard:
     def __init__(self):
         self.r, self.c = (2, 7)
         self.GB = [[4] * self.c] * self.r
-        self.GB(0, 0) = 0
-
+        self.GB[0, 0] = 0
+        self.GB[1, 6] = 0
+        self.col = 2
+        self.row = 6
     def Move(self, pit):
+        self.mvmnt = pit
         if (0 < pit < 7):
-            GB(
+            row1 = True
+            self.hBeans = self.GB[0, pit]
+            for x in range(self.hBeans):
+               if(self.mvmnt > 7)
+
+                self.GB[0, pit]
+
         else:
-        print(" player", , "move at pit " + str(pit))
+            self.hBeans = self.GB[1, pit]
+            row1 = False
+        #print(" player", , "move at pit " + str(pit))
 
 
 
