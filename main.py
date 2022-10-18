@@ -27,8 +27,7 @@ class gameboard:
         self.hBeans = self.GB[r, p]
 
 
-        while self.hbeans > 0:
-
+        while self.hbeans >= 0:
             if (self.pit > 6):
                 self.pit = 0
                 if (self.row == 1):
@@ -92,4 +91,3 @@ boar1 = gameboard()
 game1 = game(p1, p2, boar1)
 game1.startGame(p1, p2, boar1)
 
-print(boar1)
