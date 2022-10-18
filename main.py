@@ -24,10 +24,10 @@ class gameboard:
         self.row = r
         self.oRow = r
         self.pit = p + 1
-        self.hBeans = self.GB[r, p]
+        self.hBeans = self.GB[r][p]
 
 
-        while self.hbeans > 0:
+        while self.hBeans > 0:
 
             if (self.pit > 6):
                 self.pit = 0
@@ -36,14 +36,14 @@ class gameboard:
                 else:
                     self.row = 1
             if (0 <= self.pit < 6):
-                self.GB[self.row, self.pit] += 1
+                self.GB[self.row][self.pit] += 1
 
 
             else:
                 if (self.row == self.oRow):
-                    self.GB[self.row, self.pit] += 1
+                    self.GB[self.row][self.pit] += 1
 
-            self.hbeans -= 1
+            self.hBeans -= 1
 
 
 
@@ -97,3 +97,4 @@ game1 = game(p1, p2, boar1)
 game1.startGame(p1, p2, boar1)
 
 print(boar1)
+boar1.getGB()
