@@ -65,7 +65,7 @@ class game:
         x = 1
         while (x > 0):
 
-            if p1.getTurn() == True:
+            if p1.getTurn() :
 
                 # call method to gameboard class
                 pitO = int(input("enter pit value for player one: "))
