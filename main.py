@@ -16,8 +16,8 @@ class gameboard:
     def __init__(self):
         self.r, self.c = (2, 7)
         self.GB = [[4] * self.c] * self.r
-        self.GB[0, 6] = 0
-        self.GB[1, 6] = 0
+        self.GB[0][6] = 0
+        self.GB[1][6] = 0
         self.col = 2
         self.row = 6
     def Move(self, r, p):
@@ -44,8 +44,6 @@ class gameboard:
                     self.GB[self.row, self.pit] += 1
 
             self.hbeans -= 1
-
-
 
 
 
