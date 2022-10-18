@@ -27,7 +27,8 @@ class gameboard:
         self.hBeans = self.GB[r, p]
 
 
-        while self.hbeans >= 0:
+        while self.hbeans > 0:
+
             if (self.pit > 6):
                 self.pit = 0
                 if (self.row == 1):
@@ -36,11 +37,14 @@ class gameboard:
                     self.row = 1
             if (0 <= self.pit < 6):
                 self.GB[self.row, self.pit] += 1
+
+
             else:
                 if (self.row == self.oRow):
                     self.GB[self.row, self.pit] += 1
 
             self.hbeans -= 1
+
 
 
 
@@ -64,9 +68,11 @@ class game:
             if p1.getTurn() == True:
 
                 # call method to gameboard class
-                pitO = int(input("enter value for player one: "))
+                pitO = int(input("enter pit value for player one: "))
+                rowO = int(input("enter row for player one:"))
 
-                if board1.Move(pitO) == False:
+
+                if board1.Move(rowO , pitO) == False:
                     p1.setTurn(False)
                 else:
                     p1.setTurn(True)
@@ -75,9 +81,10 @@ class game:
 
                 # calls method to gameboard class
 
-                pitT = int(input("enter value for player two:"))
+                pitT = int(input("enter pit value for player two:"))
+                rowT = int(input("enter row value for player two"))
 
-                if board1.Move(pitT) == False:
+                if board1.Move(rowT , pitT) == False:
                     p2.setTurn(False)
                 else:
                     p2.setTurn(True)
@@ -91,3 +98,4 @@ boar1 = gameboard()
 game1 = game(p1, p2, boar1)
 game1.startGame(p1, p2, boar1)
 
+print(boar1)
