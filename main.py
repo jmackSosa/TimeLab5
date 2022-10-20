@@ -63,15 +63,17 @@ class game:
         x = 1
         while (x > 0):
 
-            if p1.getTurn():
+            if p1.getTurn() :
 
                 # call method to gameboard class
                 pitO = int(input("enter pit value for player one: "))
                 rowO = int(input("enter row for player one:"))
 
 
-                board1.Move(rowO , pitO)
-
+                if board1.Move(rowO , pitO) == False:
+                    p1.setTurn(False)
+                else:
+                    p1.setTurn(True)
 
             if p2.getTurn():
 
@@ -80,14 +82,18 @@ class game:
                 pitT = int(input("enter pit value for player two:"))
                 rowT = int(input("enter row value for player two"))
 
-                board1.Move(rowT , pitT)
+                if board1.Move(rowT , pitT) == False:
+                    p2.setTurn(False)
+                else:
+                    p2.setTurn(True)
 
 
 p1 = player(True)
 p2 = player(True)
+
 boar1 = gameboard()
 
 game1 = game(p1, p2, boar1)
 game1.startGame(p1, p2, boar1)
 
-
+print(boar1)
