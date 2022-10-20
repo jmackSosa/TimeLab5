@@ -1,7 +1,7 @@
 class player:
     # construct a player object and set turn value
-    def __init__(self, turn):
-        self.playerValue = turn
+    def __init__(self, sR):
+        self.startRow= sR
 
     # accesor method for turn value true or false
     def getTurn(self):
@@ -21,29 +21,34 @@ class gameboard:
         self.col = 2
         self.row = 6
     def Move(self, r, p):
+        self.goal = 6
         self.row = r
         self.oRow = r
         self.pit = p + 1
         self.hBeans = self.GB[r][p]
 
-
         while self.hBeans > 0:
-
             if (self.pit > 6):
                 self.pit = 0
                 if (self.row == 1):
                     self.row = 0
                 else:
                     self.row = 1
-            if (0 <= self.pit < 6):
-                self.GB[self.row][self.pit] += 1
 
-
+            if (self.hBeans == 1):
+                if (self.oRow == self.row):
+                    if (self.pit == 6):
+                        self.GB[self.row][self.pit] += 1
+                        return True
+                    elif (self.GB[self.row][self.pit] == 0):
+                        self.GB[self.oRow][6] = self.GB[self.row][self.pit + 1] #figure out which the other row is
+                        return False
             else:
-                if (self.row == self.oRow):
+                if (0 <= self.pit < 6):
                     self.GB[self.row][self.pit] += 1
 
             self.hBeans -= 1
+            self.pit += 1
 
 
 
@@ -62,30 +67,20 @@ class game:
     def startGame(self, p1, p2, board1):
         x = 1
         while (x > 0):
-
-            if p1.getTurn() :
-
                 # call method to gameboard class
-                pitO = int(input("enter pit value for player one: "))
-                rowO = int(input("enter row for player one:"))
+                if (p1.playerValue):
+                    print
+                else:
+                    row = int(input("enter your row: "))
+                    pit = int(input("enter a pit: "))
 
-
-                if board1.Move(rowO , pitO) == False:
+                if board1.Move(row , pit) == False:
                     p1.setTurn(False)
                 else:
                     p1.setTurn(True)
 
-            if p2.getTurn():
 
-                # calls method to gameboard class
 
-                pitT = int(input("enter pit value for player two:"))
-                rowT = int(input("enter row value for player two"))
-
-                if board1.Move(rowT , pitT) == False:
-                    p2.setTurn(False)
-                else:
-                    p2.setTurn(True)
 
 
 p1 = player(True)
