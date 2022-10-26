@@ -44,41 +44,54 @@ class gameboard:
 
 
     def Move(self, r, p):
-
-
-
-
-
-        self.goal = 6
-        self.row = r
-        self.oRow = r
-        self.pit = p + 1
         self.hBeans = self.GB[r][p]
+        self.GB[r][p] = 0
+        self.row = r
+        self.pit = p + 1
+        self.oRow = r
+
+        if (self.oRow == 0):
+            self.nRow = 1
+            self.nGoal = 6
+            self.goal = 0
+        else:
+            self.nRow = 0
+            self.nGoal = 0
+            self.goal = 6
 
         while self.hBeans > 0:
-            if (self.pit > 6):
-                self.pit = 0
-                if (self.row == 1):
+            if (self.row == 1):
+                if (self.pit > 6):
                     self.row = 0
-                else:
-                    self.row = 1
-
-            if (self.hBeans == 1):
-                if (self.oRow == self.row):
-                    if (self.pit == 6):
-                        self.GB[self.row][self.pit] += 1
-                        return True
-                    elif (self.GB[self.row][self.pit] == 0):
-                        self.GB[self.oRow][6] = self.GB[self.row][self.pit + 1]  # figure out which the other row is
-                        return False
+                    self.pit = 6
             else:
-                if (0 <= self.pit < 6):
-                    self.GB[self.row][self.pit] += 1
+                if(self.pit == 0):
+                    self.row = 1
+                    self.pit = 0
 
-            self.hBeans -= 1
-            self.pit += 1
+            if self.row == self.oRow and self.hBeans == 1:
+                if (self.pit == self.goal):
+                    self.GB[self.row][self.goal] += 1
+                    print(self.getGB())
+                    return True
+                elif (self.GB[self.row][self.pit] == 0):
+                    self.GB[self.oRow][self.goal] += self.GB[self.row][self.pit] + self.GB[self.nRow][self.pit]
+                    print(self.getGB())
+                    return False
 
-        self.getGB()
+
+            elif self.row == self.nRow and self.pit == self.nGoal:
+                continue
+            else:
+                self.GB[self.row][self.pit] += 1
+                self.hBeans -= 1
+
+            if (self.row == 1):
+                self.pit += 1
+            else:
+                self.pit -= 1
+        print(self.getGB)
+        return False
 
     def getGB(self):
         for n in self.GB:
@@ -87,38 +100,30 @@ class gameboard:
 
 
 class game:
-    def __init__(self, p1, p2, board1):
-        self.player1 = p1
-        self.player2 = p2
+    def __init__(self, board1):
         self.gameBoard = board1
 
-    def startGame(self, p1, p2, board1):
-
+    def startGame(self, board1, p1 , p2):
+        print(board1.getGB())
         while board1.getSum():
-
-                pitO = int(input("enter another pit value for player one: "))
-                rowO = int(input("enter another row for player one:"))
-                while board1.Move(rowO , pitO):
-                    pitO = int(input("enter another pit value for player one: "))
-                    rowO = int(input("enter another row for player one:"))
-                    board1.Move(rowO, pitO)
-
-
-                pitT = int(input("enter pit value for player two:"))
-                rowT = int(input("enter row value for player two"))
-                while board1.Move(pitT, rowT):
+                self.goAgain = True
+                while (self.goAgain):
+                    pitO = int(input("enter pit value for player one: "))
+                    rowO = int(input("enter row for player one:"))
+                    self.goAgain = board1.Move(rowO, pitO)
+                self.goAgain2 = True
+                while (self.goAgain2):
                     pitT = int(input("enter pit value for player two:"))
                     rowT = int(input("enter row value for player two"))
-                    board1.Move(pitT , rowT)
+                    self.goAgain2 = board1.Move(pitT , rowT)
+                self.goAgain = True
+                self.goAgain2 = True
 
-
-
-p1 = player(True)
-p2 = player(True)
 
 boar1 = gameboard()
-
-game1 = game(p1, p2, boar1)
-game1.startGame(p1, p2, boar1)
+p1 = player(0)
+p2 = player(0)
+game1 = game(boar1)
+game1.startGame(boar1, p1 , p2)
 
 
