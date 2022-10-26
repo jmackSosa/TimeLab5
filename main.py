@@ -45,12 +45,6 @@ class gameboard:
 
 
 
-
-
-
-
-
-
     def Move(self, r, p):
         self.goal = 6
         self.row = r
