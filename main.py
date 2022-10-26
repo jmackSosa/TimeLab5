@@ -1,15 +1,10 @@
 class player:
     # construct a player object and set turn value
-    def __init__(self, sR):
-        self.startRow = sR
+    def __init__(self, val ):
+        self.val = val
 
-    # accesor method for turn value true or false
-    def getTurn(self):
-        return self.playerValue
 
-    # change the turn value of the player
-    def setTurn(self, turnVal):
-        self.playerValue = turnVal
+
 
 
 class gameboard:
@@ -21,8 +16,7 @@ class gameboard:
         self.col = 2
         self.row = 6
 
-        self.GB = [4, 4, 4, 4, 4, 4, 0 ],
-                  [ 0, 4, 4, 4, 4, 4, 4]
+        self.GB = [0, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 0]
 
     def getSum(self):
         total = 0
@@ -39,9 +33,12 @@ class gameboard:
     def altMove(self, r, p):
         inHand = self.GB[r][p]
 
+        #count downfirst array, keep the x value the same and count up the second array, keep x vlaue same then-->
+        #if player 2, place in last bin of array2, if player one place in first bin of array1
 
 
-        #if player two
+
+
 
 
 
@@ -84,9 +81,8 @@ class gameboard:
         self.getGB()
 
     def getGB(self):
-        r = self.GB[0][::-1]
-        print(r)
-        print(self.GB[1])
+        for n in self.GB:
+            print(n)
 
 
 
@@ -100,21 +96,22 @@ class game:
 
         while board1.getSum():
 
+                pitO = int(input("enter another pit value for player one: "))
+                rowO = int(input("enter another row for player one:"))
+                while board1.Move(rowO , pitO):
+                    pitO = int(input("enter another pit value for player one: "))
+                    rowO = int(input("enter another row for player one:"))
+                    board1.Move(rowO, pitO)
 
-                board1.getGB()
-                pitO = int(input("enter pit value for player one: "))
-                rowO = int(input("enter row for player one:"))
-                if board1.Move(rowO, pitO):
-                    pitOe = int(input("enter another pit value for player one: "))
-                    rowOe = int(input("enter another row for player one:"))
-                    board1.Move(rowOe, pitOe)
 
                 pitT = int(input("enter pit value for player two:"))
                 rowT = int(input("enter row value for player two"))
-                if board1.Move(rowT, pitT):
-                    pitTe = int(input("enter pit value for player two:"))
-                    rowTe = int(input("enter row value for player two"))
-                    board1.Move(rowTe, pitTe)
+                while board1.Move(pitT, rowT):
+                    pitT = int(input("enter pit value for player two:"))
+                    rowT = int(input("enter row value for player two"))
+                    board1.Move(pitT , rowT)
+
+
 
 p1 = player(True)
 p2 = player(True)
