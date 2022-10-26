@@ -21,7 +21,8 @@ class gameboard:
         self.col = 2
         self.row = 6
 
-        self.GB = [4, 4, 4, 4, 4, 4, 0], [4, 4, 4, 4, 4, 4, 0]
+        self.GB = [4, 4, 4, 4, 4, 4, 0 ],
+                  [ 0, 4, 4, 4, 4, 4, 4]
 
     def getSum(self):
         total = 0
@@ -46,6 +47,11 @@ class gameboard:
 
 
     def Move(self, r, p):
+
+
+
+
+
         self.goal = 6
         self.row = r
         self.oRow = r
@@ -78,8 +84,10 @@ class gameboard:
         self.getGB()
 
     def getGB(self):
-        for row in self.GB:
-            print(row)
+        r = self.GB[0][::-1]
+        print(r)
+        print(self.GB[1])
+
 
 
 class game:
@@ -93,6 +101,7 @@ class game:
         while board1.getSum():
 
 
+                board1.getGB()
                 pitO = int(input("enter pit value for player one: "))
                 rowO = int(input("enter row for player one:"))
                 if board1.Move(rowO, pitO):
