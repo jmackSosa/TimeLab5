@@ -144,9 +144,9 @@ class game:
                 goAgainT = board1.altMove(playertwoRow, playertwoPit)
 
         if board1.GB[0][0] > board1.GB[1][6]:
-            print("Player one wins")
+            print("Player one wins with score of:" , str(board1.GB[0][0]))
         else:
-            print("Player two wins")
+            print("Player two wins with score of:", str(board1.GB[1][6]))
 
 
 boar1 = gameboard()
