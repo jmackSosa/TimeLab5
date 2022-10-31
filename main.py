@@ -125,7 +125,10 @@ class game:
 
     def startGame(self, board1, p1, p2):
         print(board1.getGB())
-        print(board1.getSum(), ": THERE ARE PIECES ON THE BOARD")
+        if board1.getSum():
+            print("There are  pieces on the board")
+        else:
+            print("There are no pieces on the board and ")
         while board1.getSum():
 
             goAgainO = True
